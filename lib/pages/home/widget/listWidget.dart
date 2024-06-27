@@ -5,89 +5,75 @@ import 'package:wallet_crypto_dashboard/pages/class/classToken.dart';
 
 const List<Map<String, dynamic>> listDeTest = [
   {
-    'name': 'Ethereum',
-    'price': '2,768',
-    'perc': '+3.98',
-    'quantity': '3.023',
-    'symb': 'ETH'
-  },
-  {
-    'name': 'Bitcoin',
-    'price': '62,892',
-    'perc': '+4.8',
-    'quantity': '1.02',
-    'symb': 'BTC'
-  },
-  {
-    'name': 'Ethereum',
-    'price': '2,768',
-    'perc': '+3.98',
-    'quantity': '3.023',
-    'symb': 'ETH'
-  },
-  {
-    'name': 'Bitcoin',
-    'price': '62,892',
-    'perc': '+4.8',
-    'quantity': '1.02',
-    'symb': 'BTC'
-  },
-  {
-    'name': 'Ethereum',
-    'price': '2,768',
-    'perc': '+3.98',
-    'quantity': '3.023',
-    'symb': 'ETH'
-  },
-  {
-    'name': 'Bitcoin',
-    'price': '62,892',
-    'perc': '+4.8',
-    'quantity': '1.02',
-    'symb': 'BTC'
-  },
-  {
-    'name': 'Ethereum',
-    'price': '2,768',
-    'perc': '+3.98',
-    'quantity': '3.023',
-    'symb': 'ETH'
-  },
-  {
-    'name': 'Bitcoin',
-    'price': '62,892',
-    'perc': '+4.8',
-    'quantity': '1.02',
-    'symb': 'BTC'
-  },
-  {
-    'name': 'Ethereum',
-    'price': '2,768',
-    'perc': '+3.98',
-    'quantity': '3.023',
-    'symb': 'ETH'
-  },
-  {
-    'name': 'Bitcoin',
-    'price': '62,892',
-    'perc': '+4.8',
-    'quantity': '1.02',
-    'symb': 'BTC'
-  },
-  {
-    'name': 'Ethereum',
-    'price': '2,768',
-    'perc': '+3.98',
-    'quantity': '3.023',
-    'symb': 'ETH'
-  },
-  {
-    'name': 'Bitcoin',
-    'price': '62,892',
-    'perc': '+4.8',
-    'quantity': '1.02',
-    'symb': 'BTC'
-  },
+      'name': 'Ethereum',
+      'price': '2,768',
+      'perc': '+3.98',
+      'quantity': '3.023',
+      'symb': 'ETH'
+    },
+    {
+      'name': 'Bitcoin',
+      'price': '62,892',
+      'perc': '+4.8',
+      'quantity': '1.02',
+      'symb': 'BTC'
+    },
+    {
+      'name': 'Cardano',
+      'price': '1.7',
+      'perc': '+3.98',
+      'quantity': '343.023',
+      'symb': 'ADA'
+    },
+    {
+      'name': 'Filecoin',
+      'price': '7.978',
+      'perc': '+23.8',
+      'quantity': '10.02',
+      'symb': 'FIL'
+    },
+    {
+      'name': 'Binance Coin',
+      'price': '276.8',
+      'perc': '+41.98',
+      'quantity': '34.023',
+      'symb': 'BNB'
+    },
+    {
+      'name': 'Fantom',
+      'price': '0.092',
+      'perc': '+1.8',
+      'quantity': '1.02',
+      'symb': 'FTM'
+    },
+    {
+      'name': 'Tether',
+      'price': '1',
+      'perc': '+3.98',
+      'quantity': '332.023',
+      'symb': 'USDT'
+    },
+    {
+      'name': 'Axelar',
+      'price': '0.908',
+      'perc': '+8',
+      'quantity': '209.09',
+      'symb': 'AXL'
+    },
+    {
+      'name': 'Near Protocol',
+      'price': '5.867',
+      'perc': '+3.98',
+      'quantity': '786.023',
+      'symb': 'NEAR'
+    },
+    {
+      'name': 'Chiliz',
+      'price': '0.071',
+      'perc': '+8',
+      'quantity': '10,920.02',
+      'symb': 'CHZ'
+    },
 ];
 
 List<classToken> TokenUserList =
@@ -125,7 +111,7 @@ class _listWidget extends State<listWidget> {
                               borderRadius: BorderRadius.circular(20),
                               color: Color.fromRGBO(10, 11, 10, 1),
                             ),
-                            height: 440,
+                            height: 760,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -427,27 +413,6 @@ class _listWidget extends State<listWidget> {
                                     children: [
                                       ElevatedButton(
                                         style: ElevatedButton.styleFrom(
-                                          backgroundColor:
-                                              Color.fromRGBO(255, 59, 89, 1),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                          ),
-                                        ),
-                                        onPressed: () => deleteItem(index),
-                                        child: Text('Delete',
-                                            style: TextStyle(
-                                              fontSize: 17,
-                                              color: Color.fromRGBO(
-                                                  254, 255, 254, 1),
-                                              fontWeight: FontWeight.w600,
-                                            )),
-                                      ),
-                                      SizedBox(
-                                        width: 50,
-                                      ),
-                                      ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
                                             backgroundColor: Colors.transparent,
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
@@ -467,6 +432,27 @@ class _listWidget extends State<listWidget> {
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),
+                                      ),
+                                      SizedBox(
+                                        width: 50,
+                                      ),
+                                      ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              Color.fromRGBO(255, 59, 89, 1),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
+                                        ),
+                                        onPressed: () => deleteItem(index),
+                                        child: Text('Delete',
+                                            style: TextStyle(
+                                              fontSize: 17,
+                                              color: Color.fromRGBO(
+                                                  254, 255, 254, 1),
+                                              fontWeight: FontWeight.w600,
+                                            )),
                                       ),
                                     ],
                                   )
@@ -519,7 +505,7 @@ class _listWidget extends State<listWidget> {
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Color.fromRGBO(254, 255, 254, 1),
-                                  fontWeight: FontWeight.w200,
+                                  fontWeight: FontWeight.w300,
                                 )),
                           ],
                         ),

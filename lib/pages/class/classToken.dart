@@ -10,7 +10,7 @@ class classToken {
     classToken_id = id;
     classToken_name = name;
     classToken_price = price;
-    classToken_perc = perc;
+    classToken_perc = perc; //pourcentage de PNL
     classToken_quantity = quantity;
     classToken_symb = symb;
   }
