@@ -101,7 +101,6 @@ class _listWidget extends State<listWidget> {
             children: [
               SlidableAction(
                 onPressed: ((context) {
-                  print("${TokenUserList[index].classToken_symb} delete");
                   showBarModalBottomSheet(
                       context: context,
                       backgroundColor: Colors.transparent,
@@ -126,74 +125,6 @@ class _listWidget extends State<listWidget> {
                                 SizedBox(
                                   height: 20,
                                 ),
-                                /*
-                                Container(
-                                  padding: EdgeInsets.only(
-                                      left: 10, right: 10, bottom: 10, top: 10),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: Color.fromRGBO(20, 21, 23, 1),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text('Token',
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: Color.fromRGBO(
-                                                    168, 168, 172, 1),
-                                                fontWeight: FontWeight.w300,
-                                              )),
-                                          SizedBox(
-                                            width: 300,
-                                            child: TextField(
-                                              decoration: InputDecoration(
-                                                  border: InputBorder.none),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(
-                                      left: 10, right: 10, bottom: 10, top: 10),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: Color.fromRGBO(20, 21, 23, 1),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text('Quantity',
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: Color.fromRGBO(
-                                                    168, 168, 172, 1),
-                                                fontWeight: FontWeight.w300,
-                                              )),
-                                          SizedBox(
-                                            width: 300,
-                                            child: TextField(
-                                              decoration: InputDecoration(
-                                                  border: InputBorder.none),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ), */
                                 Container(
                                   padding: EdgeInsets.only(
                                       left: 15, right: 10, bottom: 10, top: 20),
@@ -222,6 +153,8 @@ class _listWidget extends State<listWidget> {
                                                     SizedBox(
                                                       width: 230,
                                                       child: TextField(
+                                                        autofocus: true,
+                                                        keyboardType: TextInputType.numberWithOptions(decimal: true),
                                                         decoration:
                                                             InputDecoration(
                                                                 border:
@@ -308,6 +241,7 @@ class _listWidget extends State<listWidget> {
                                                       SizedBox(
                                                         width: 300,
                                                         child: TextField(
+                                                          keyboardType: TextInputType.numberWithOptions(decimal: true),
                                                           decoration:
                                                               InputDecoration(
                                                                   border:
@@ -347,7 +281,7 @@ class _listWidget extends State<listWidget> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 20),
+                                SizedBox(height: 40),
                                 Container(
                                   width: 300,
                                   child: ElevatedButton(
@@ -359,7 +293,7 @@ class _listWidget extends State<listWidget> {
                                       ),
                                     ),
                                     onPressed: () => deleteItem(index),
-                                    child: Text('Save token',
+                                    child: Text('Save Token',
                                         style: TextStyle(
                                           fontSize: 17,
                                           color:
