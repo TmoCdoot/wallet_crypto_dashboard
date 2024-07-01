@@ -87,6 +87,9 @@ class listWidget extends StatefulWidget {
 }
 
 class _listWidget extends State<listWidget> {
+  final quantityEditToken = TextEditingController();
+  final buyPriceEditToken = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -153,6 +156,7 @@ class _listWidget extends State<listWidget> {
                                                     SizedBox(
                                                       width: 230,
                                                       child: TextField(
+                                                        controller: quantityEditToken,
                                                         autofocus: true,
                                                         keyboardType: TextInputType.numberWithOptions(decimal: true),
                                                         decoration:
@@ -241,6 +245,7 @@ class _listWidget extends State<listWidget> {
                                                       SizedBox(
                                                         width: 300,
                                                         child: TextField(
+                                                          controller: buyPriceEditToken,
                                                           keyboardType: TextInputType.numberWithOptions(decimal: true),
                                                           decoration:
                                                               InputDecoration(
@@ -292,7 +297,7 @@ class _listWidget extends State<listWidget> {
                                         borderRadius: BorderRadius.circular(15),
                                       ),
                                     ),
-                                    onPressed: () => deleteItem(index),
+                                    onPressed: () => editToken(),
                                     child: Text('Save Token',
                                         style: TextStyle(
                                           fontSize: 17,
@@ -480,6 +485,14 @@ class _listWidget extends State<listWidget> {
         );
       },
     );
+  }
+
+  void editToken() {
+    print(quantityEditToken.text);
+    print(buyPriceEditToken.text);
+    buyPriceEditToken.clear();
+    quantityEditToken.clear();
+    Navigator.pop(context);
   }
 
   void deleteItem(int index) {

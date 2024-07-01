@@ -85,12 +85,13 @@ class _addToken extends State<addToken> {
     },
   ]; //liste aléatoire
 
-  List<classToken> TokenUserList =
-      List.from(listToken.map((doc) => classToken.fromSnapshot(doc)));
+  List<classToken> TokenUserList = List.from(listToken.map((doc) => classToken.fromSnapshot(doc)));
 
   List<classToken> listTokenSearchBox = []; //data trouver par valuer rechercher
-  final searchController =
-      TextEditingController(); //recup data dans la searchbox
+  
+  final searchController = TextEditingController(); //recup data dans la searchbox
+  final buyPriceAddToken = TextEditingController(); 
+  final quantityAddToken = TextEditingController(); 
 
   @override
   void initState() {
@@ -191,7 +192,7 @@ class _addToken extends State<addToken> {
 
   Widget listRender(tokenList) {
     if (listTokenSearchBox.length != 0) {
-      return InkWell(
+      return GestureDetector(
         onTap: () {
           showMaterialModalBottomSheet(
             context: context,
@@ -204,7 +205,6 @@ class _addToken extends State<addToken> {
             margin: EdgeInsets.only(bottom: 30),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              //color: Color.fromARGB(255, 56, 61, 56),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -236,7 +236,6 @@ class _addToken extends State<addToken> {
                 ),
               ],
             )
-            //Text(token),
             ),
       );
     } else {
@@ -253,7 +252,6 @@ class _addToken extends State<addToken> {
   }
 
   Widget tokenAddPrice(classToken tokenList) {
-    print(tokenList.classToken_name);
     return Container(
       padding: EdgeInsets.all(15),
           decoration: BoxDecoration(
@@ -269,27 +267,40 @@ class _addToken extends State<addToken> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   InkWell(
+                    
                     onTap: () => {
                       Navigator.pop(context)
                     },
-                    child: Image.asset(
-                        'assets/images/back.png',
-                        width: 20,
+                    child: Container(
+                      alignment: Alignment.topLeft,
+                      width: 50,
+                      height: 20,
+                      decoration: BoxDecoration(
+                        //color: Colors.red
+                      ),
+                      child: Image.asset(
+                          'assets/images/back.png',
+                          width: 20,
+                          height: 20,
+                      ),
                     ),
                   ),
                   Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Enter Amount',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Color.fromRGBO(254, 255, 254, 1),
-                            fontWeight: FontWeight.w700,
+                    child: Container(
+                      margin: EdgeInsets.only(right: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Enter Amount',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color.fromRGBO(254, 255, 254, 1),
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -300,6 +311,7 @@ class _addToken extends State<addToken> {
                   Container(
                     width: 200,
                     child: TextFormField(
+                      controller: quantityAddToken,
                       textAlign: TextAlign.right,
                       autofocus: true,
                       decoration: InputDecoration(
@@ -362,7 +374,7 @@ class _addToken extends State<addToken> {
               ),
               SizedBox(height: 5,),
               TextField(
-                //controller: searchController,
+                controller: buyPriceAddToken,
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
                 decoration: InputDecoration(
                   hintText: 'Optional',
@@ -395,7 +407,7 @@ class _addToken extends State<addToken> {
                       borderRadius: BorderRadius.circular(15),
                     ),
                   ),
-                  onPressed: () => print("enter"),
+                  onPressed: () => addToken(tokenList),
                   child: Text('Add Token',
                       style: TextStyle(
                         fontSize: 17,
@@ -408,5 +420,15 @@ class _addToken extends State<addToken> {
             ],
           ),
     );
+  }
+
+  void addToken(classToken tokenList) {
+    print(buyPriceAddToken.text);
+    print(quantityAddToken.text);
+    print(tokenList.classToken_name);
+    quantityAddToken.clear();
+    buyPriceAddToken.clear();
+    Navigator.pop(context); 
+    Navigator.pop(context); 
   }
 }
