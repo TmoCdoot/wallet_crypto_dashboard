@@ -9,11 +9,13 @@ class listSection extends StatefulWidget {
 }
 
 class _listSection extends State<listSection> {
-  int viewState = 0;
+  var viewState;
+
 
 @override
   void initState() {
     super.initState();
+    viewState = 0;
   }
 
   @override
@@ -32,12 +34,14 @@ class _listSection extends State<listSection> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () {viewState = 0;},
+                  onTap: () {setState(() {
+                    viewState = 0;
+                  },);},
                   child: Text(
                     "Tokens",
                     style: TextStyle(
                       fontSize: 20,
-                      color: Color.fromRGBO(254, 255, 254, 1),
+                      color: viewState==0 ? Color.fromRGBO(254, 255, 254, 1): Color.fromRGBO(168, 168, 172, 1),
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -46,12 +50,14 @@ class _listSection extends State<listSection> {
                   width: 40,
                 ),
                 InkWell(
-                  onTap: () {viewState = 1;},
+                  onTap: () {setState(() {
+                    viewState = 1;
+                  },);},
                   child: Text(
                     "Collectibles",
                     style: TextStyle(
                       fontSize: 20,
-                      color: Color.fromRGBO(168, 168, 172, 1),
+                      color: viewState==0 ? Color.fromRGBO(168, 168, 172, 1) : Color.fromRGBO(254, 255, 254, 1),
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -60,22 +66,13 @@ class _listSection extends State<listSection> {
             ),
           ),
           Expanded( //switch to token collectible
-            child: test(),
+            child: viewState==0 ? TokenRender() : CollectiblesRender(),
           )
         ],
       ),
     );
     });
     
-  }
-  
-  
-  Widget test() {
-    if (viewState == 0) {
-      return TokenRender();
-    } else {
-      return CollectiblesRender();
-    } 
   }
 
   Widget TokenRender() {
