@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:wallet_crypto_dashboard/pages/home/widget/listWidget.dart';
 
-class listSection extends StatelessWidget {
+class listSection extends StatefulWidget {
   const listSection({super.key});
 
   @override
+  State<listSection> createState() => _listSection();
+}
+
+class _listSection extends State<listSection> {
+  int viewState = 0;
+
+@override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return StatefulBuilder(builder: (BuildContext context, setState) {
+      return Expanded(
       flex: 1,
       child: Column(
-        children: [
+        children: <Widget>[
           Container(
             decoration: BoxDecoration(
                 border: Border(
@@ -19,7 +32,7 @@ class listSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () {print("tokens");},
+                  onTap: () {viewState = 0;},
                   child: Text(
                     "Tokens",
                     style: TextStyle(
@@ -33,7 +46,7 @@ class listSection extends StatelessWidget {
                   width: 40,
                 ),
                 InkWell(
-                  onTap: () {print("collectibles");},
+                  onTap: () {viewState = 1;},
                   child: Text(
                     "Collectibles",
                     style: TextStyle(
@@ -46,20 +59,42 @@ class listSection extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Container(
-                  //color: Colors.green,
-                  child: Column(
-                    children: [
-                      listWidget(),
-                    ],
-                  )),
-            ),
+          Expanded( //switch to token collectible
+            child: test(),
           )
         ],
       ),
+    );
+    });
+    
+  }
+  
+  
+  Widget test() {
+    if (viewState == 0) {
+      return TokenRender();
+    } else {
+      return CollectiblesRender();
+    } 
+  }
+
+  Widget TokenRender() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Container(
+          //color: Colors.green,
+          child: Column(
+        children: [
+          listWidget(),
+        ],
+      )),
+    );
+  }
+
+  Widget CollectiblesRender() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Text('data'),
     );
   }
 }
