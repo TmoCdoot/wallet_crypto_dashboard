@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_crypto_dashboard/pages/home/widget/listWidget.dart';
+import 'package:wallet_crypto_dashboard/pages/home/widget/sections/userTokenList.sections.dart';
 
 class listSection extends StatefulWidget {
   const listSection({super.key});
@@ -9,13 +9,13 @@ class listSection extends StatefulWidget {
 }
 
 class _listSection extends State<listSection> {
-  var viewState;
+  var stateShowSection;
 
 
 @override
   void initState() {
     super.initState();
-    viewState = 0;
+    stateShowSection = "token";
   }
 
   @override
@@ -29,20 +29,23 @@ class _listSection extends State<listSection> {
             decoration: BoxDecoration(
                 border: Border(
                     bottom: BorderSide(color: Color.fromRGBO(29, 28, 31, 1)))),
-            padding: EdgeInsets.only(left: 25, right: 25, bottom: 10),
+            padding: EdgeInsets.only(left: 25, right: 25),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
                   onTap: () {setState(() {
-                    viewState = 0;
+                    stateShowSection = "token";
                   },);},
-                  child: Text(
-                    "Tokens",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: viewState==0 ? Color.fromRGBO(254, 255, 254, 1): Color.fromRGBO(168, 168, 172, 1),
-                      fontWeight: FontWeight.w600,
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      "Tokens",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: stateShowSection=="token" ? Color.fromRGBO(254, 255, 254, 1): Color.fromRGBO(168, 168, 172, 1),
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
@@ -51,14 +54,17 @@ class _listSection extends State<listSection> {
                 ),
                 InkWell(
                   onTap: () {setState(() {
-                    viewState = 1;
+                    stateShowSection = "collectibles";
                   },);},
-                  child: Text(
-                    "Collectibles",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: viewState==0 ? Color.fromRGBO(168, 168, 172, 1) : Color.fromRGBO(254, 255, 254, 1),
-                      fontWeight: FontWeight.w600,
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      "Collectibles",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: stateShowSection=="token" ? Color.fromRGBO(168, 168, 172, 1) : Color.fromRGBO(254, 255, 254, 1),
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
@@ -66,7 +72,7 @@ class _listSection extends State<listSection> {
             ),
           ),
           Expanded( //switch to token collectible
-            child: viewState==0 ? TokenRender() : CollectiblesRender(),
+            child: stateShowSection=="token" ? showTokenSection() : showCollectiblesSection(),
           )
         ],
       ),
@@ -75,20 +81,20 @@ class _listSection extends State<listSection> {
     
   }
 
-  Widget TokenRender() {
+  Widget showTokenSection() {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Container(
           //color: Colors.green,
           child: Column(
         children: [
-          listWidget(),
+          userTokenList(),
         ],
       )),
     );
   }
 
-  Widget CollectiblesRender() {
+  Widget showCollectiblesSection() {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Text('data'),

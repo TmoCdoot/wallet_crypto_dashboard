@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:wallet_crypto_dashboard/pages/home/widget/modals/addToken.dart';
+import 'package:wallet_crypto_dashboard/pages/home/widget/modals/searchBar.modals.dart';
 
 class globalSection extends StatefulWidget {
   const globalSection({super.key});
@@ -73,7 +73,7 @@ class _globalSection extends State<globalSection> {
                     onTap: () => showBarModalBottomSheet(
                         context: context,
                         backgroundColor: Colors.transparent,
-                        builder: (context) => addToken()),
+                        builder: (context) => searchBar()),
                     child: Image.asset(
                       'assets/images/add.png',
                       height: 50,

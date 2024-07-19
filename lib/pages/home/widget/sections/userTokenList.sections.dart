@@ -2,9 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:wallet_crypto_dashboard/pages/class/classToken.dart';
+import 'package:wallet_crypto_dashboard/pages/home/widget/modals/editUserToken.modals.dart';
 
-const List<Map<String, dynamic>> listDeTest = [
-  {
+class userTokenList extends StatefulWidget {
+  const userTokenList({super.key});
+
+  @override
+  State<userTokenList> createState() => _userTokenList();
+}
+
+class _userTokenList extends State<userTokenList> {
+  static const List<Map<String, dynamic>> listTest = [
+    {
       'name': 'Ethereum',
       'price': '2,768',
       'perc': '+3.98',
@@ -74,21 +83,10 @@ const List<Map<String, dynamic>> listDeTest = [
       'quantity': '10,920.02',
       'symb': 'CHZ'
     },
-];
+  ];
 
-List<classToken> TokenUserList =
-    List.from(listDeTest.map((doc) => classToken.fromSnapshot(doc)));
+  List<classToken> listAppToken = List.from(listTest.map((doc) => classToken.fromSnapshot(doc)));
 
-class listWidget extends StatefulWidget {
-  const listWidget({super.key});
-
-  @override
-  State<listWidget> createState() => _listWidget();
-}
-
-class _listWidget extends State<listWidget> {
-  final quantityEditToken = TextEditingController();
-  final buyPriceEditToken = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -96,13 +94,14 @@ class _listWidget extends State<listWidget> {
       physics: NeverScrollableScrollPhysics(), //prend la physique du parent
       padding: EdgeInsets.zero,
       shrinkWrap: true,
-      itemCount: TokenUserList.length,
+      itemCount: listAppToken.length,
       itemBuilder: (context, index) {
         return Slidable(
           startActionPane: ActionPane(
             motion: ScrollMotion(),
             children: [
-              SlidableAction(
+              editUserToken(userTokenSelect: listAppToken[index])
+              /*SlidableAction(
                 onPressed: ((context) {
                   showBarModalBottomSheet(
                       context: context,
@@ -118,7 +117,7 @@ class _listWidget extends State<listWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  'Edit ${TokenUserList[index].classToken_name}',
+                                  'Edit ${listAppToken[index].classToken_name}',
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: Color.fromRGBO(254, 255, 254, 1),
@@ -156,15 +155,17 @@ class _listWidget extends State<listWidget> {
                                                     SizedBox(
                                                       width: 230,
                                                       child: TextField(
-                                                        controller: quantityEditToken,
+                                                        controller:
+                                                            quantityEditToken,
                                                         autofocus: true,
-                                                        keyboardType: TextInputType.numberWithOptions(decimal: true),
+                                                        keyboardType: TextInputType
+                                                            .numberWithOptions(
+                                                                decimal: true),
                                                         decoration:
                                                             InputDecoration(
-                                                                border:
-                                                                    InputBorder
-                                                                        .none,
-                                                                ),
+                                                          border:
+                                                              InputBorder.none,
+                                                        ),
                                                         style: TextStyle(
                                                           color: Colors.white,
                                                           fontWeight:
@@ -179,7 +180,7 @@ class _listWidget extends State<listWidget> {
                                                       child: Row(
                                                         children: [
                                                           Image.asset(
-                                                            'assets/images/${TokenUserList[index].classToken_symb}.png',
+                                                            'assets/images/${listAppToken[index].classToken_symb}.png',
                                                             width: 40,
                                                           ),
                                                           Container(
@@ -187,7 +188,7 @@ class _listWidget extends State<listWidget> {
                                                                 EdgeInsets.only(
                                                                     left: 10),
                                                             child: Text(
-                                                              "${TokenUserList[index].classToken_symb}",
+                                                              "${listAppToken[index].classToken_symb}",
                                                               style: TextStyle(
                                                                   fontSize: 16,
                                                                   color: Colors
@@ -203,13 +204,17 @@ class _listWidget extends State<listWidget> {
                                                   ],
                                                 ),
                                               ),
-                                              Text('1 ${TokenUserList[index].classToken_symb} ≈ 3290.90 \$ ',
-                                                style: TextStyle(
+                                              Text(
+                                                  '1 ${listAppToken[index].classToken_symb} ≈ 3290.90 \$ ',
+                                                  style: TextStyle(
                                                     fontSize: 14,
-                                                    color: Color.fromARGB(255, 59, 61, 66),
+                                                    color: Color.fromARGB(
+                                                        255, 59, 61, 66),
                                                     fontWeight: FontWeight.w600,
                                                   )),
-                                              SizedBox(height: 5,)
+                                              SizedBox(
+                                                height: 5,
+                                              )
                                             ],
                                           ),
                                         ],
@@ -245,8 +250,13 @@ class _listWidget extends State<listWidget> {
                                                       SizedBox(
                                                         width: 300,
                                                         child: TextField(
-                                                          controller: buyPriceEditToken,
-                                                          keyboardType: TextInputType.numberWithOptions(decimal: true),
+                                                          controller:
+                                                              buyPriceEditToken,
+                                                          keyboardType:
+                                                              TextInputType
+                                                                  .numberWithOptions(
+                                                                      decimal:
+                                                                          true),
                                                           decoration:
                                                               InputDecoration(
                                                                   border:
@@ -314,7 +324,7 @@ class _listWidget extends State<listWidget> {
                 backgroundColor: Colors.transparent,
                 icon: Icons.edit_note,
                 foregroundColor: Color.fromRGBO(254, 171, 46, 1),
-              )
+              )*/
             ],
           ),
           endActionPane: ActionPane(
@@ -322,7 +332,7 @@ class _listWidget extends State<listWidget> {
             children: [
               SlidableAction(
                 onPressed: ((context) {
-                  //print("${TokenUserList[index].classToken_symb} delete");
+                  //print("${listAppToken[index].classToken_symb} delete");
                   showBarModalBottomSheet(
                       context: context,
                       backgroundColor: Colors.transparent,
@@ -337,7 +347,7 @@ class _listWidget extends State<listWidget> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
                                   Text(
-                                    'Are your really want delete ${TokenUserList[index].classToken_name} ? ',
+                                    'Are your really want delete ${listAppToken[index].classToken_name} ? ',
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: Color.fromRGBO(254, 255, 254, 1),
@@ -414,7 +424,7 @@ class _listWidget extends State<listWidget> {
                 Column(
                   children: [
                     Image.asset(
-                      'assets/images/${TokenUserList[index].classToken_symb}.png',
+                      'assets/images/${listAppToken[index].classToken_symb}.png',
                       width: 40,
                     )
                   ],
@@ -427,7 +437,7 @@ class _listWidget extends State<listWidget> {
                   children: [
                     Row(
                       children: [
-                        Text(TokenUserList[index].classToken_name.toString(),
+                        Text(listAppToken[index].classToken_name.toString(),
                             style: TextStyle(
                               height: 1.5,
                               fontSize: 20,
@@ -440,7 +450,7 @@ class _listWidget extends State<listWidget> {
                       children: [
                         Column(
                           children: [
-                            Text('\$${TokenUserList[index].classToken_price}',
+                            Text('\$${listAppToken[index].classToken_price}',
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Color.fromRGBO(254, 255, 254, 1),
@@ -454,7 +464,7 @@ class _listWidget extends State<listWidget> {
                         Column(
                           children: [
                             Text(
-                              '${TokenUserList[index].classToken_perc}%',
+                              '${listAppToken[index].classToken_perc}%',
                               style: TextStyle(
                                   fontSize: 12,
                                   color: Color.fromRGBO(107, 181, 36, 1)),
@@ -470,7 +480,7 @@ class _listWidget extends State<listWidget> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                          '${TokenUserList[index].classToken_quantity} ${TokenUserList[index].classToken_symb}',
+                          '${listAppToken[index].classToken_quantity} ${listAppToken[index].classToken_symb}',
                           style: TextStyle(
                             fontSize: 20,
                             color: Color.fromRGBO(254, 255, 254, 1),
@@ -487,16 +497,8 @@ class _listWidget extends State<listWidget> {
     );
   }
 
-  void editToken() {
-    print(quantityEditToken.text);
-    print(buyPriceEditToken.text);
-    buyPriceEditToken.clear();
-    quantityEditToken.clear();
-    Navigator.pop(context);
-  }
-
   void deleteItem(int index) {
-    setState(() => TokenUserList.removeAt(index));
+    setState(() => listAppToken.removeAt(index));
     Navigator.pop(context);
   }
 
