@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:wallet_crypto_dashboard/pages/class/classToken.dart';
-import 'package:wallet_crypto_dashboard/pages/home/widget/modals/formAddToken.modals.dart';
+import 'package:wallet_crypto_dashboard/class/classToken.class.dart';
+import 'package:wallet_crypto_dashboard/modals/formAddToken.modals.dart';
 
 class searchBar extends StatefulWidget {
   const searchBar({super.key});

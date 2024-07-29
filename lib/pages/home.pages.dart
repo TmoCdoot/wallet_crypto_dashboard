@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_crypto_dashboard/pages/home/widget/globalSection.dart';
-import 'package:wallet_crypto_dashboard/pages/home/widget/header.dart';
-import 'package:wallet_crypto_dashboard/pages/home/widget/listSection.dart';
+import 'package:wallet_crypto_dashboard/block/walletUserInfo.block.dart';
+import 'package:wallet_crypto_dashboard/block/walletUserData.block.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -36,9 +35,8 @@ class _HomePage extends State<HomePage> {
               ),
               Column(
                 children: <Widget> [
-                    Header(),
-                    globalSection(),
-                    listSection(),
+                    walletUserInfo(),
+                    walletUserData(),
                 ],
               )
             ],

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:wallet_crypto_dashboard/pages/class/classToken.dart';
+import 'package:wallet_crypto_dashboard/class/classToken.class.dart';
 
 class editUserToken extends StatefulWidget {
   final classToken userTokenSelect;
 
-  const editUserToken(
-      {super.key, required this.userTokenSelect});
+  const editUserToken({super.key, required this.userTokenSelect});
 
   @override
-  State<editUserToken> createState() => _editUserToken(userTokenSelect: userTokenSelect);
+  State<editUserToken> createState() =>
+      _editUserToken(userTokenSelect: userTokenSelect);
 }
 
 class _editUserToken extends State<editUserToken> {
@@ -19,14 +19,15 @@ class _editUserToken extends State<editUserToken> {
   var quantityUserToken = TextEditingController();
   var buyPriceUserToken = TextEditingController();
   classToken userTokenSelect;
-  
+
   @override
   void initState() {
     super.initState();
-    buyPriceUserToken = TextEditingController(text: userTokenSelect.classToken_price);
-    quantityUserToken = TextEditingController(text: userTokenSelect.classToken_quantity);
+    buyPriceUserToken =
+        TextEditingController(text: userTokenSelect.classToken_price);
+    quantityUserToken =
+        TextEditingController(text: userTokenSelect.classToken_quantity);
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -203,7 +204,9 @@ class _editUserToken extends State<editUserToken> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 40),
+                      SizedBox(
+                        height: 40
+                      ),
                       Container(
                         width: 300,
                         child: ElevatedButton(
@@ -213,7 +216,7 @@ class _editUserToken extends State<editUserToken> {
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
-                          onPressed: () => editToken(),
+                          onPressed: () => saveEditUserToken(),
                           child: Text('Save Token',
                               style: TextStyle(
                                 fontSize: 17,
@@ -232,7 +235,7 @@ class _editUserToken extends State<editUserToken> {
     );
   }
 
-  void editToken() {
+  void saveEditUserToken() {
     print(quantityUserToken.text);
     print(buyPriceUserToken.text);
     buyPriceUserToken.clear();

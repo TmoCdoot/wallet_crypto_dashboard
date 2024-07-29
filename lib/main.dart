@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_crypto_dashboard/pages/home/home.dart';
+import 'package:wallet_crypto_dashboard/pages/home.pages.dart';
 
 void main() {
   //lance app (tv, mobile, ordi)

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_crypto_dashboard/pages/class/classToken.dart';
+import 'package:wallet_crypto_dashboard/class/classToken.class.dart';
 
 class formAddToken extends StatefulWidget {
   final classToken listTokenForRender;
@@ -36,9 +36,7 @@ class _formAddToken extends State<formAddToken> {
                   alignment: Alignment.topLeft,
                   width: 50,
                   height: 20,
-                  decoration: BoxDecoration(
-                      //color: Colors.red
-                      ),
+                  decoration: BoxDecoration(),
                   child: Image.asset(
                     'assets/images/back.png',
                     width: 20,
@@ -85,11 +83,6 @@ class _formAddToken extends State<formAddToken> {
                     fontWeight: FontWeight.w800,
                     fontSize: 40,
                   ),
-                  /*initialValue: valueBuilder,
-                      onSaved: (text) {
-                        fieldsController.text = text.trim();
-                      },*/
-
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
                 ),
               ),
@@ -128,7 +121,9 @@ class _formAddToken extends State<formAddToken> {
               ),
             ],
           ),
-          SizedBox(height: 30),
+          SizedBox(
+            height: 30
+          ),
           Row(
             children: [
               Text(
@@ -179,7 +174,7 @@ class _formAddToken extends State<formAddToken> {
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              onPressed: () => addTokenOnStorage(widget.listTokenForRender),
+              onPressed: () => addTokenOnUserStorage(widget.listTokenForRender),
               child: Text('Add Token',
                   style: TextStyle(
                     fontSize: 17,
@@ -193,11 +188,10 @@ class _formAddToken extends State<formAddToken> {
     );
   }
 
-  void addTokenOnStorage(classToken listTokenForRender) {
+  void addTokenOnUserStorage(classToken listTokenForRender) {
     print(buyPriceTokenFromUser.text);
     print(quantityTokenFromUser.text);
     print(listTokenForRender.classToken_name);
-
 
     quantityTokenFromUser.clear();
     buyPriceTokenFromUser.clear();
