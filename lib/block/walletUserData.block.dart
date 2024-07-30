@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_crypto_dashboard/sections/userCollectiblesList.sections.dart';
 import 'package:wallet_crypto_dashboard/sections/userTokenList.sections.dart';
 
 class walletUserData extends StatefulWidget {
@@ -98,19 +99,22 @@ class _walletUserData extends State<walletUserData> {
   Widget showTokenSection() {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      child: Container(
-          child: Column(
+      child: Column(
         children: [
           userTokenList(),
         ],
-      )),
+      ),
     );
   }
 
   Widget showCollectiblesSection() {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      child: Text('data'),
+      child: Column(
+        children: [
+          userCollectiblesList()
+          ],
+        ),
     );
   }
 }
