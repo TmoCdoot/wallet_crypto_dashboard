@@ -1,15 +1,23 @@
 # wallet_crypto_dashboard
 
-Si le lancement marche pas
+If have problem for launch projet try this 
 
-1- flutter clean 
+```text
+flutter clean
+flutter pub get
+```
 
-2- Flutter pub get
+Go to `/ios` folder 
 
-3- cd ios
+```text
+cd ios
+pod init
+pod install
+```
 
-4- pod init
+### Run projet
 
-5- pod install
-
-6-
+For run Cintr', open folder on `bash` terminal and run command
+```
+flutter run
+```
